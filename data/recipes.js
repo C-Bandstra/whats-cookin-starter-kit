@@ -5381,3 +5381,4 @@ const recipeData = [
             "side dish"
         ]
     }
+];
