@@ -87,6 +87,7 @@ main {
   width: 20%;
   height: 400px;
   border:2px solid black;
+  box-shadow: 8px 5px 5px grey;
 }
 
 .name-container {
@@ -115,6 +116,16 @@ main {
   width: 20px;
 }
 
+.add-recipe-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.added-tag {
+  margin: 0px;
+}
+
 .card-button-container {
   height: 14%;
   width: 100%;
@@ -129,4 +140,8 @@ display: flex;
 justify-content: space-around;
 flex-wrap: wrap;
 background-color: #f4f4f4;
+}
+
+.trash-icon {
+  width: 20px;;
 }
