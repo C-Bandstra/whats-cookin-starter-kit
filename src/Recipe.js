@@ -15,7 +15,7 @@ class Recipe {
   getInstructions() {
     //return this.instructions
   }
-}
+};
 
 if (typeof module !== 'undefined') {
   module.exports = Recipe;

@@ -20,4 +20,3 @@
 - [ ] Recipe-test.js
 - [ ] Pantry-test.js
 - [ ] User-test.js
-
