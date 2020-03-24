@@ -3,10 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <title>Whats Cookin</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap' rel='stylesheet'>
   </head>
   <body>
-    <h1>Whats Cookin</h1>
-
+    <header class='main-header'>
+      <h1>What's Cookin'</h1>
+      <p class='user-info'>Welcome, <span class='user-name'>User</span>.</p>
+      <section class="button-container">
+        <button id='home-button' class='home navButton'>Home</button>
+        <button id='view-favorites-button' class=' view-favorites navButton'>View Favorites</button>
+        <button id='view-recipes' class=' view-to-cook navButton'>View Your Recipes</button>
+    </section>
+    </header>
+    <main>
+      <section class='all-cards'>
+      </section>
+    </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/recipes.js"></script>
     <script type="text/javascript" src="../data/ingredients.js"></script>
