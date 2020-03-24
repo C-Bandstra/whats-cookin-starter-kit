@@ -1,0 +1,82 @@
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  font-family: 'Lobster', cursive;
+}
+
+body {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.main-header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+
+.user-info {
+  margin-left: 10%;
+  font-size: 1.5em;
+}
+
+.button-container {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  border: 0px;
+  height: 90%;
+  width: 33%;
+  font-size: 20px;
+  outline: none;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  transition: background-color 1s;
+  outline: none;
+}
+
+main {
+  height: 90%;
+  width: 100%;
+}
+
+.img-container {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.home-img {
+  display: flex;
+  width: 50%;
+  height: 100%;
+}
+
+.recipe-header-container {
+  height: 12%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-header {
+  font-size: 2em;
+  color: white;
+}
