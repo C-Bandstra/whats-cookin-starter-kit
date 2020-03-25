@@ -58,4 +58,14 @@ describe('Recipe', function() {
     expect(recipe.getCost()).to.equal(1000);
     expect(recipe2.getCost()).to.equal(100);
   })
+
+  it('should be able to get instructions', function() {
+    let recipe2 = new Recipe(sampleRecipe[0]);
+
+    recipe.getInstructions();
+    recipe2.getInstructions();
+
+    expect(recipe.getInstructions()).to.equal(recipe.instructions)
+    expect(recipe2.getInstructions()).to.equal(recipe2.instructions)
+  })
 })

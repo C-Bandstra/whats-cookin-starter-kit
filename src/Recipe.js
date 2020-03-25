@@ -44,7 +44,7 @@ class Recipe {
   }
 
   getInstructions() {
-    //return this.instructions
+    return this.instructions;
   }
 };
 
