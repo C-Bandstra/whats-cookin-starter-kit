@@ -12,23 +12,36 @@ class Recipe {
   }
 
   getIngredientIds() {
-    return this.ingredients.map((ingredient) => ingredient.id);
+    let ingredientId = this.ingredients.map((ingredient) => ingredient.id);
+    return ingredientId
   }
 
-  getIngredientsByID() {
+  getIngredient() {
+    let recipeIngredients = []
     let listOfIngredients = this.getIngredientIds();
+    for (var i = 0; i < listOfIngredients.length; i++) {
       sampleIngredient.map((ingredient) => {
-        if();
-      });
-      // listOfIngredients.foreach((ingredient) => {
-      // },);
+        if(ingredient.id === listOfIngredients[i]) {
+          recipeIngredients.push(ingredient);
+        }
+      })
+    }
+    return recipeIngredients;
   }
 
   getCost() {
-    // for (var i = 0; i < this.ingredients.length; i++) {
-      // if ()
-  // }
- }
+    let amountOfEach = this.ingredients;
+    let recipeIngredients = this.getIngredient();
+    let totals = 0
+      recipeIngredients.map((ingredient) => {
+        amountOfEach.filter((amount) => {
+          if(ingredient.id === amount.id) {
+            totals += ingredient.estimatedCostInCents * amount.quantity.amount;
+        }
+      })
+    })
+    return totals;
+  }
 
   getInstructions() {
     //return this.instructions

@@ -3,20 +3,13 @@ const sampleRecipe = [
       "id": 1,
       "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
       "ingredients": [
-          {
-              "id": 100,
-              "quantity": {
-                  "amount": 1.5,
-                  "unit": "c"
-              }
-          },
-          {
-              "id": 200,
-              "quantity": {
-                  "amount": 0.5,
-                  "unit": "tsp"
-              }
-          },
+        {
+            "id": 300,
+            "quantity": {
+                "amount": 1,
+                "unit": "c"
+            }
+        },
       ],
       "instructions": [
           {
@@ -41,14 +34,14 @@ const sampleRecipe = [
           {
               "id": 100,
               "quantity": {
-                  "amount": 1.5,
+                  "amount": 1,
                   "unit": "c"
               }
           },
           {
               "id": 200,
               "quantity": {
-                  "amount": 0.5,
+                  "amount": 1,
                   "unit": "tsp"
               }
           },

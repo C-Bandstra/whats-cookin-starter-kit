@@ -2,12 +2,12 @@ const ingredients = [
   {
   "id": 100,
   "name": "banana",
-  "estimatedCostInCents": 582
+  "estimatedCostInCents": 500
   },
   {
   "id": 200,
   "name": "anotherBanana",
-  "estimatedCostInCents": 582
+  "estimatedCostInCents": 500
   },
   {
   "id": 300,

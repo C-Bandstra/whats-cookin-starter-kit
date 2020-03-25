@@ -12,7 +12,7 @@ describe('Recipe', function() {
   let sampleIngredients = sampleIngredient;
 
   beforeEach(function() {
-    recipe = new Recipe(sampleRecipes[0]);
+    recipe = new Recipe(sampleRecipes[1]);
     // ingredient = new Ingredient();
   });
 
@@ -33,8 +33,29 @@ describe('Recipe', function() {
   })
 
   it('should return an array of ingredients objects', function() {
-    recipe.getIngredientsByID();
+    recipe.getIngredient();
 
-    expect(recipe.getIngredientsByID()).to.equal([{}])
+    expect(recipe.getIngredient()).to.deep.equal([
+      {
+         "estimatedCostInCents": 500,
+         "id": 100,
+         "name": "banana"
+      },
+      {
+        "estimatedCostInCents": 500,
+        "id": 200,
+        "name": "anotherBanana"
+      }
+    ]);
+  })
+
+  it('should get the cost of all of the ingredients', function() {
+    let recipe2 = new Recipe(sampleRecipe[0]);
+
+    recipe.getCost();
+    recipe2.getCost();
+
+    expect(recipe.getCost()).to.equal(1000);
+    expect(recipe2.getCost()).to.equal(100);
   })
 })
