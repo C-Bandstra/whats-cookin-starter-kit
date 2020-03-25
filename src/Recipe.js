@@ -1,3 +1,6 @@
+const sampleIngredient = require('../test/sampleIngredient');
+
+
 class Recipe {
   constructor(recipe) {
     this.id = recipe.id;
@@ -8,9 +11,24 @@ class Recipe {
     this.instructions = recipe.instructions;
   }
 
-  getCost() {
-    //add ingredient prices together
+  getIngredientIds() {
+    return this.ingredients.map((ingredient) => ingredient.id);
   }
+
+  getIngredientsByID() {
+    let listOfIngredients = this.getIngredientIds();
+      sampleIngredient.map((ingredient) => {
+        if();
+      });
+      // listOfIngredients.foreach((ingredient) => {
+      // },);
+  }
+
+  getCost() {
+    // for (var i = 0; i < this.ingredients.length; i++) {
+      // if ()
+  // }
+ }
 
   getInstructions() {
     //return this.instructions
