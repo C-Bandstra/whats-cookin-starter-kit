@@ -14,6 +14,12 @@ const ingredients = [
   "name": "Beer",
   "estimatedCostInCents": 100
   },
+  {
+  "id": 400,
+  "name": "Apple",
+  "estimatedCostInCents": 200
+  },
 ]
-
-module.exports = ingredients
+if (typeof module !== 'undefined') {
+  module.exports = ingredients;
+}

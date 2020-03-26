@@ -5,7 +5,7 @@ const user = [
     "pantry": [
       {
         "ingredient": 100,
-        "amount": 0
+        "amount": 10
       },
       {
         "ingredient": 200,
@@ -14,6 +14,10 @@ const user = [
       {
         "ingredient": 300,
         "amount": 30
+      },
+      {
+        "ingredient": 400,
+        "amount": 5
       },
     ]
   },
