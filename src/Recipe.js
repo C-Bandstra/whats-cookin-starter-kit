@@ -1,3 +1,6 @@
+const sampleIngredient = require('../test/sampleIngredient');
+
+
 class Recipe {
   constructor(recipe) {
     this.id = recipe.id;
@@ -9,11 +12,21 @@ class Recipe {
   }
 
   getCost() {
-    //add ingredient prices together
+    let costCounter = 0;
+    let result;
+    this.ingredients.forEach(ingredient => {
+      sampleIngredient.find(specificIngredient => {
+        if(specificIngredient.id === ingredient.id) {
+          costCounter += specificIngredient.estimatedCostInCents * ingredient.quantity.amount
+          result = costCounter;
+        }
+      })
+    });
+    return result
   }
 
   getInstructions() {
-    //return this.instructions
+    return this.instructions;
   }
 };
 

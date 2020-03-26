@@ -5,12 +5,23 @@ class Pantry {
   }
 
   checkPantryForIngredients() {
-    //check to see if user has enough ingredients to cook recipe
+    let neededIngredients = recipe.ingredients.filter(ingredient => {
+      return this.userIngredients.map(userIngredient => {
+        if (ingredient.id === userIngredient.ingredient) {
+        }
+      });
+    })
+    return neededIngredients;
   }
 
-  findNeededIngredients() {
-    // find what ingredients are necessary to cook recipe
-  }
+
+  // findNeededIngredients() {
+  //   let neededIngredients = this.checkPantryForIngredients();
+  //   neededIngredients.forEach((ingredient) => {
+  //     console.log('in pantry', this.userIngredients);
+  //     return ingredient.quantity.amount;
+  //   });
+  // }
 
   removeRecipeIngredients() {
     //remove ingredients from pantry once recipe has been started
