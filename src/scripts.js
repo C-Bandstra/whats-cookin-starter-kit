@@ -3,6 +3,8 @@ let body = document.querySelector('body');
 let homePage = document.querySelector('.home-page')
 let addedPage = document.querySelector('.added-page')
 let favoritesPage = document.querySelector('.favorites-page')
+let favRecipes = document.querySelector('.favs-cards')
+let addedRecipes = document.querySelector('.added-cards')
 
 window.onload = loadPage();
 
@@ -11,21 +13,32 @@ body.addEventListener('click', clickHandler)
 function clickHandler() {
   var classList = event.target.classList
   if (classList.contains('favorite-img')) {
-    displayFavorite()
+    displayIconChange(iconSources.red, iconSources.white)
+    User.updateFavorites(addToUser());
   }
   if (classList.contains('add-recipe-img')) {
-    displayAdded();
-    addToSaved();
+    displayIconChange(iconSources.trash, iconSources.add)
+    User.updateRecipesToCook(addToUser());
   }
   if (classList.contains('add-recipe-button')) {
-    displayAddedPage();
+    displayPage(addedPage, favoritesPage, homePage);
+    displayUserRecipes(User.recipesToCook);
   }
   if (classList.contains('favorites-button')) {
-    displayFavoritesPage();
+    displayPage(favoritesPage, addedPage, homePage);
+    displayUserRecipes(User.favoriteRecipes);
   }
   if (classList.contains('home-button')) {
-    displayHomePage();
+    displayPage(homePage, addedPage, favoritesPage);
   }
+}
+
+function displayUserRecipes(arr) {
+  let currentPage = document.getElementsByClassName('current')
+  currentPage[0].innerHTML = ''
+  arr.forEach(recipe => {    
+    currentPage[0].insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
+  });
 }
 
 function loadPage() {
@@ -42,52 +55,24 @@ function showRecipes() {
 function generateUser() {
    let user = usersData[Math.floor(Math.random() * usersData.length)]
    User = new User(user.id, user.name, user.pantry)
-   return User
 }
 
-function displayFavorite() {
-  console.log(event.target.id)
-  let red = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png'
-  let white = 'https://i.ya-webdesign.com/images/heart-icon-png-7.png'
-  event.target.src === white ? event.target.src = red : event.target.src = white
-  addToFavorites();
+function displayIconChange(active, inactive) {
+  event.target.src === active ? event.target.src = inactive : event.target.src = active;
 }
 
-function displayAdded() {
-  console.log(event.target.id)
-  let trash = 'https://cdn3.iconfinder.com/data/icons/action-3/24/71_-_Action_bin_delete_all_garbage_recycle_remove_trash_icon-512.png'
-  let add = 'https://image.flaticon.com/icons/svg/32/32339.svg'
-  event.target.src === add ? event.target.src = trash : event.target.src = add;
+function displayPage(currentPage, page1, page2) {
+  currentPage.removeAttribute('hidden');
+  page1.setAttribute('hidden', '')
+  page2.setAttribute('hidden', '');
+  page1.childNodes[3].classList.remove('current')
+  page2.childNodes[3].classList.remove('current')
+  currentPage.childNodes[3].classList.add('current')
 }
 
-function displayAddedPage() {
-  homePage.setAttribute('hidden', '');
-  favoritesPage.setAttribute('hidden', '');
-  addedPage.removeAttribute('hidden')
-}
-
-function displayFavoritesPage() {
-  homePage.setAttribute('hidden', '');
-  addedPage.setAttribute('hidden', '')
-  favoritesPage.removeAttribute('hidden');
-}
-
-function displayHomePage() {
-  addedPage.setAttribute('hidden', '')
-  favoritesPage.setAttribute('hidden', '');
-  homePage.removeAttribute('hidden');
-}
-
-function addToFavorites() {
+function addToUser() {
   let clickedRecipe = recipeData.filter(recipe => {
     return event.target.id === recipe.name
   });
-  User.favoriteRecipes.push(clickedRecipe[0])
-}
-
-function addToSaved() {
-  let clickedRecipe = recipeData.filter(recipe => {
-    return event.target.id === recipe.name
-  });
-  User.recipesToCook.push(clickedRecipe[0])
+  return clickedRecipe[0]
 }
