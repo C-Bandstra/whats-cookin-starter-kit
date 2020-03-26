@@ -22,8 +22,6 @@ describe('Pantry', function() {
   })
 
   it.only('should check pantry for needed ingredients' , function() {
-    // console.log('test', pantry.findNeededIngredients());
-    pantry.checkPantryForIngredients();
 
     expect(pantry.checkPantryForIngredients()).to.deep.equal([
   { id: 100, quantity: { amount: 1, unit: 'c' } },
@@ -34,6 +32,6 @@ describe('Pantry', function() {
   it('should check pantry for needed ingredients', function() {
     pantry.findNeededIngredients();
 
-    expect(pantry.findNeededIngredients).to.deep.equal()
+    expect(pantry.findNeededIngredients).to.deep.equal(true)
   } )
 })

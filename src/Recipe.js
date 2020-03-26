@@ -11,36 +11,18 @@ class Recipe {
     this.instructions = recipe.instructions;
   }
 
-  getIngredientIds() {
-    let ingredientId = this.ingredients.map((ingredient) => ingredient.id);
-    return ingredientId
-  }
-
-  getIngredient() {
-    let recipeIngredients = []
-    let listOfIngredients = this.getIngredientIds();
-    for (var i = 0; i < listOfIngredients.length; i++) {
-      sampleIngredient.map((ingredient) => {
-        if(ingredient.id === listOfIngredients[i]) {
-          recipeIngredients.push(ingredient);
-        }
-      })
-    }
-    return recipeIngredients;
-  }
-
   getCost() {
-    let amountOfEach = this.ingredients;
-    let recipeIngredients = this.getIngredient();
-    let totals = 0
-      recipeIngredients.map((ingredient) => {
-        amountOfEach.filter((amount) => {
-          if(ingredient.id === amount.id) {
-            totals += ingredient.estimatedCostInCents * amount.quantity.amount;
+    let costCounter = 0;
+    let result;
+    this.ingredients.forEach(ingredient => {
+      sampleIngredient.find(specificIngredient => {
+        if(specificIngredient.id === ingredient.id) {
+          costCounter += specificIngredient.estimatedCostInCents * ingredient.quantity.amount
+          result = costCounter;
         }
       })
-    })
-    return totals;
+    });
+    return result
   }
 
   getInstructions() {

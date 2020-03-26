@@ -14,11 +14,11 @@ const sampleRecipe = [
       "instructions": [
           {
               "instruction": "Open Can",
-              "number": 1
+              "number": 3
           },
           {
               "instruction": "Drink responsibly",
-              "number": 2
+              "number": 4
           },
       ],
       "name": "Beer",
