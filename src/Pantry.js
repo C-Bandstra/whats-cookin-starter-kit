@@ -5,7 +5,13 @@ class Pantry {
   }
 
   checkPantryForIngredients() {
-    //check to see if user has enough ingredients to cook recipe
+    let neededIngredients = recipe.ingredients.filter((ingredient) => {
+      return this.userIngredients.map((userIngredient) => {
+        if (ingredient.id === userIngredient.ingredient) {
+        }
+      });
+    })
+    return neededIngredients;
   }
 
   findNeededIngredients() {

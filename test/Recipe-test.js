@@ -8,8 +8,8 @@ const sampleIngredient = require('../test/sampleIngredient');
 
 describe('Recipe', function() {
 
-  let sampleRecipes = sampleRecipe;
-  let sampleIngredients = sampleIngredient;
+  const sampleRecipes = sampleRecipe;
+  const sampleIngredients = sampleIngredient;
 
   beforeEach(function() {
     recipe = new Recipe(sampleRecipes[1]);
