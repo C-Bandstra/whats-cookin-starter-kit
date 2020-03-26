@@ -14,11 +14,11 @@ function clickHandler() {
   var classList = event.target.classList
   if (classList.contains('favorite-img')) {
     displayIconChange(iconSources.red, iconSources.white)
-    addToUser(User.favoriteRecipes)
+    User.updateFavorites(addToUser());
   }
   if (classList.contains('add-recipe-img')) {
     displayIconChange(iconSources.trash, iconSources.add)
-    addToUser(User.recipesToCook)
+    User.updateRecipesToCook(addToUser());
   }
   if (classList.contains('add-recipe-button')) {
     displayPage(addedPage, favoritesPage, homePage);
@@ -34,7 +34,6 @@ function clickHandler() {
 }
 
 function displayUserRecipes(arr) {
-  debugger
   let currentPage = document.getElementsByClassName('current')
   currentPage[0].innerHTML = ''
   arr.forEach(recipe => {    
@@ -56,7 +55,6 @@ function showRecipes() {
 function generateUser() {
    let user = usersData[Math.floor(Math.random() * usersData.length)]
    User = new User(user.id, user.name, user.pantry)
-   return User
 }
 
 function displayIconChange(active, inactive) {
@@ -72,15 +70,9 @@ function displayPage(currentPage, page1, page2) {
   currentPage.childNodes[3].classList.add('current')
 }
 
-function addToUser(arr) {
+function addToUser() {
   let clickedRecipe = recipeData.filter(recipe => {
     return event.target.id === recipe.name
   });
-  if (!arr.includes(clickedRecipe[0])) {
-    arr.push(clickedRecipe[0])
-  } else {
-    let match = arr.filter(recipe => clickedRecipe = recipe)
-    let index = arr.indexOf(match)
-    arr.splice(index)
-  }
+  return clickedRecipe[0]
 }
