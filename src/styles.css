@@ -135,7 +135,9 @@ main {
   border-bottom: 2px solid black;
 }
 
-.all-cards {
+.all-cards,
+.favs-cards,
+.added-cards{
 display: flex;
 justify-content: space-around;
 flex-wrap: wrap;
