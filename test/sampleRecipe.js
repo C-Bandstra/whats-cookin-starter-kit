@@ -61,6 +61,30 @@ const sampleRecipe = [
           "fruit",
           "vegan",
       ]
+  },
+  {
+      "id": 2,
+      "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
+      "ingredients": [
+          {
+              "id": 400,
+              "quantity": {
+                  "amount": 138,
+                  "unit": "c"
+              }
+          },
+      ],
+      "instructions": [
+          {
+              "instruction": "Eat",
+              "number": 1
+          },
+      ],
+      "name": "Apple",
+      "tags": [
+          "fruit",
+          "vegan",
+      ]
   }
 ]
 module.exports = sampleRecipe;
