@@ -29,8 +29,16 @@ class Pantry {
     return ingredientsNeeded;
 }
 
-  removeRecipeIngredients() {
-    //remove ingredients from pantry once recipe has been started
+  removeRecipeIngredients(currentRecipe) {
+    let recipeIngredients = this.checkPantryForIngredients(currentRecipe);
+    let userPantry = this.userIngredients
+      let adjustedPantry = userPantry.filter(usedIngredient => {
+        return recipeIngredients.map(ingredient => {
+          if (ingredient.id === usedIngredient.ingredient)
+          usedIngredient.amount -= ingredient.quantity.amount;
+        });
+      })
+      return adjustedPantry
   }
 }
 

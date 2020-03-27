@@ -31,7 +31,17 @@ describe('Pantry', function() {
 ])
   })
 
-  it.only('should return missing ingredients', function() {
+  it('should return missing ingredients', function() {
     expect(pantry.findNeededIngredients(recipe1)).to.deep.equal([{ id: 400, quantity: { amount: 138, unit: 'c' }}])
-  } )
+  })
+
+  it('should remove ingredients from the pantry', function() {
+    expect(pantry.removeRecipeIngredients(recipe)).to.deep.equal([
+  { ingredient: 100, amount: 9 },
+  { ingredient: 200, amount: 19 },
+  { ingredient: 300, amount: 30 },
+  { ingredient: 400, amount: 40 }
+]
+)
+  })
 })
