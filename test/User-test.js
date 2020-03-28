@@ -24,10 +24,10 @@ describe('User', function() {
 
   it('should be able to add favorite recipes', function() {
     user.updateFavorites(recipe);
-    expect(user.favoriteRecipes[1]).to.equal(recipe1);
+    expect(user.favoriteRecipes[0]).to.equal(recipe);
 
     user.updateFavorites(recipe1);
-    expect(user.favoriteRecipes[0]).to.equal(recipe);
+    expect(user.favoriteRecipes[1]).to.equal(recipe1);
   })
   it('should be able to remove favorite recipes', function() {
     user.updateFavorites(recipe);
@@ -36,5 +36,23 @@ describe('User', function() {
     user.updateFavorites(recipe);
     expect(user.favoriteRecipes).to.deep.equal([]);
   })
-  
+  it('should be able to add recipes to cook ', function() {
+    user.updateRecipesToCook(recipe);
+    expect(user.recipesToCook[0]).to.equal(recipe);
+
+    user.updateRecipesToCook(recipe1);
+    expect(user.recipesToCook[1]).to.equal(recipe1);
+  })
+  it('should be able to remove recipes to cook', function() {
+    user.updateRecipesToCook(recipe);
+    expect(user.recipesToCook[0]).to.equal(recipe);
+
+    user.updateRecipesToCook(recipe);
+    expect(user.recipesToCook).to.deep.equal([]);
+  })
+  it('should filter recipes by type', function() {
+    user.updateFavorites(recipe);
+    user.updateFavorites(recipe1);
+    user.filterRecipesByType(this.favoriteRecipes);
+  })
 })

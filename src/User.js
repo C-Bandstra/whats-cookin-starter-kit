@@ -7,6 +7,7 @@ class User {
     this.recipesToCook = [];
   }
   updateFavorites(recipe) {
+    console.log('reci[e', recipe);
     if (!this.favoriteRecipes.includes(recipe)) {
       this.favoriteRecipes.push(recipe)
     } else {
@@ -24,6 +25,10 @@ class User {
       let index = this.recipesToCook.indexOf(match)
       this.recipesToCook.splice(index)
     }
+  }
+
+  filterRecipesByType(arr) {
+    console.log(arr);
   }
 }
 
