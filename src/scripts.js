@@ -34,12 +34,13 @@ function clickHandler() {
 }
 
 function displayUserRecipes(arr) {
+  console.log(event.target.classList)
   let currentPage = document.getElementsByClassName('current')
   currentPage[0].innerHTML = ''
   arr.forEach(recipe => {    
     currentPage[0].insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
   });
-  event.target.classList.contains('favorite-img') ? changeFavCards() : changeSavedCards();
+  event.target.classList.contains('favorites-button') ? changeFavCards() : changeSavedCards();
 }
 
 function changeFavCards() {
