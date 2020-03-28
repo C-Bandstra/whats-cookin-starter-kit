@@ -13,6 +13,7 @@ class Pantry {
         }
       });
     })
+    
     return ingredientsOnHand;
   }
 
