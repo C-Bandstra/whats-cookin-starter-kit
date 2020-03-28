@@ -7,7 +7,6 @@ class User {
     this.recipesToCook = [];
   }
   updateFavorites(recipe) {
-    debugger
     if (!this.favoriteRecipes.includes(recipe)) {
       this.favoriteRecipes.push(recipe)
     } else {
