@@ -26,9 +26,9 @@ class User {
     }
   }
 
-  filterRecipesByType(recipesToFilter) {
+  filterRecipesByType(recipesToFilter, type) {
     let filteredRecipes = recipesToFilter.reduce((recipeList, recipe) => {
-      if (recipe.type.includes('fruit')) {
+      if (recipe.type.includes(type)) {
       recipeList.push(recipe)
     }
       return recipeList

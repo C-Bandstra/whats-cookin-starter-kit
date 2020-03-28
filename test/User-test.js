@@ -55,6 +55,6 @@ describe('User', function() {
     user.updateFavorites(recipe1);
     // user.filterRecipesByType(user.favoriteRecipes);
 
-    expect(user.filterRecipesByType(user.favoriteRecipes)).to.deep.equal([user.favoriteRecipes[1]])
+    expect(user.filterRecipesByType(user.favoriteRecipes, 'fruit')).to.deep.equal([user.favoriteRecipes[1]])
   })
 })
