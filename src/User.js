@@ -7,7 +7,6 @@ class User {
     this.recipesToCook = [];
   }
   updateFavorites(recipe) {
-    console.log('reci[e', recipe);
     if (!this.favoriteRecipes.includes(recipe)) {
       this.favoriteRecipes.push(recipe)
     } else {
@@ -27,8 +26,14 @@ class User {
     }
   }
 
-  filterRecipesByType(arr) {
-    console.log(arr);
+  filterRecipesByType(recipesToFilter) {
+    let filteredRecipes = recipesToFilter.reduce((recipeList, recipe) => {
+      if (recipe.type.includes('fruit')) {
+      recipeList.push(recipe)
+    }
+      return recipeList
+    },[]);
+    return filteredRecipes;
   }
 }
 

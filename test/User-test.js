@@ -50,9 +50,11 @@ describe('User', function() {
     user.updateRecipesToCook(recipe);
     expect(user.recipesToCook).to.deep.equal([]);
   })
-  it('should filter recipes by type', function() {
+  it.only('should filter recipes by type', function() {
     user.updateFavorites(recipe);
     user.updateFavorites(recipe1);
-    user.filterRecipesByType(this.favoriteRecipes);
+    // user.filterRecipesByType(user.favoriteRecipes);
+
+    expect(user.filterRecipesByType(user.favoriteRecipes)).to.deep.equal([user.favoriteRecipes[1]])
   })
 })
