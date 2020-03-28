@@ -1,10 +1,10 @@
 let allCardsContainer = document.querySelector('.all-cards');
 let body = document.querySelector('body');
-let homePage = document.querySelector('.home-page')
-let addedPage = document.querySelector('.added-page')
-let favoritesPage = document.querySelector('.favorites-page')
-let favRecipes = document.querySelector('.favs-cards')
-let addedRecipes = document.querySelector('.added-cards')
+let homePage = document.querySelector('.home-page');
+let addedPage = document.querySelector('.added-page');
+let favoritesPage = document.querySelector('.favorites-page');
+let favRecipes = document.querySelector('.favs-cards');
+let addedRecipes = document.querySelector('.added-cards');
 
 window.onload = loadPage();
 
@@ -39,6 +39,23 @@ function displayUserRecipes(arr) {
   arr.forEach(recipe => {    
     currentPage[0].insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
   });
+  event.target.classList.contains('favorite-img') ? changeFavCards() : changeSavedCards();
+}
+
+function changeFavCards() {
+  let cards = document.getElementsByClassName('favs-cards')
+  let elements = cards[0].getElementsByClassName('card-button-container')
+  var buttons = Array.from(elements);
+  console.log(buttons)
+  buttons.forEach(button => button.innerHTML = `<p class="instructions-btn">Get Instructions</p>`)
+}
+
+function changeSavedCards() {
+  let cards = document.getElementsByClassName('added-cards')
+  let elements = cards[0].getElementsByClassName('card-button-container')
+  var buttons = Array.from(elements);
+  console.log(buttons)
+  buttons.forEach(button => button.innerHTML = `<p class="instructions-btn">Get Instructions</p>`)
 }
 
 function loadPage() {
