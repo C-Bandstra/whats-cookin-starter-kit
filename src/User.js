@@ -48,33 +48,6 @@ class User {
     return matching;
   }
 
-
-  // filterByIngredient(recipesToFilter, filterBy) {
-  //   if(typeOfFilter === 'ingredient'){
-  //     let filterType = 'id';
-  //     recipesToFilter.forEach(singleRecipe => {
-  //     recipe.ingredients.map(ingredient => {
-  //       this.filterByType(singleRecipe.ingredients, filterType, filterBy );
-  //       })
-  //     })
-  //   } else {
-  //     this.filterByType(recipesToFilter, typeOfFilter, filterBy)
-  //   }
-  // }
-  //
-  //
-  // }
-
-  // filterByName(recipesToFilter, filterBy) {
-  //   let filteredRecipes = recipesToFilter.reduce((recipeList, recipe) => {
-  //     if (recipe.name.includes(filterBy)) {
-  //     recipeList.push(recipe)
-  //   }
-  //     return recipeList
-  //   },[]);
-  //     return filteredRecipes;
-  // }
-
   filterByTypeOrName(recipesToFilter, filterBy, typeOfFilter) {
     // console.log('filter', filterBy);
     let filteredRecipes = recipesToFilter.reduce((recipeList, recipe) => {
