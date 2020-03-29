@@ -26,9 +26,59 @@ class User {
     }
   }
 
-  filterRecipesByType(recipesToFilter, type) {
+  determineFilterType(recipesToFilter, filterBy, typeOfFilter) {
+    if(typeOfFilter === 'ingredients'){
+      return this.filterByIngredient(recipesToFilter, filterBy, typeOfFilter);
+    } else {
+      return this.filterByTypeOrName(recipesToFilter, filterBy, typeOfFilter);
+    }
+  }
+
+  filterByIngredient(recipesToFilter, filterBy, typeOfFilter) {
+    let matching = []
+    recipesToFilter.forEach(recipe => {
+      recipe.ingredients.forEach(ingredient => {
+        testIngredients.filter(testIngredient => {
+          if(testIngredient.id === ingredient.id && testIngredient.name === filterBy) {
+           matching.push(recipe);
+        }
+      })
+    })
+  })
+    return matching;
+  }
+
+
+  // filterByIngredient(recipesToFilter, filterBy) {
+  //   if(typeOfFilter === 'ingredient'){
+  //     let filterType = 'id';
+  //     recipesToFilter.forEach(singleRecipe => {
+  //     recipe.ingredients.map(ingredient => {
+  //       this.filterByType(singleRecipe.ingredients, filterType, filterBy );
+  //       })
+  //     })
+  //   } else {
+  //     this.filterByType(recipesToFilter, typeOfFilter, filterBy)
+  //   }
+  // }
+  //
+  //
+  // }
+
+  // filterByName(recipesToFilter, filterBy) {
+  //   let filteredRecipes = recipesToFilter.reduce((recipeList, recipe) => {
+  //     if (recipe.name.includes(filterBy)) {
+  //     recipeList.push(recipe)
+  //   }
+  //     return recipeList
+  //   },[]);
+  //     return filteredRecipes;
+  // }
+
+  filterByTypeOrName(recipesToFilter, filterBy, typeOfFilter) {
+    // console.log('filter', filterBy);
     let filteredRecipes = recipesToFilter.reduce((recipeList, recipe) => {
-      if (recipe.type.includes(type)) {
+      if (recipe[typeOfFilter].includes(filterBy)) {
       recipeList.push(recipe)
     }
       return recipeList

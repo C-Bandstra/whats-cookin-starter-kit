@@ -63,13 +63,44 @@ const sampleRecipe = [
       ]
   },
   {
-      "id": 2,
+      "id": 3,
       "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
       "ingredients": [
           {
               "id": 400,
               "quantity": {
                   "amount": 138,
+                  "unit": "c"
+              }
+          },
+      ],
+      "instructions": [
+          {
+              "instruction": "Eat",
+              "number": 1
+          },
+      ],
+      "name": "Apple",
+      "tags": [
+          "fruit",
+          "vegan",
+      ]
+  },
+  {
+      "id": 4,
+      "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
+      "ingredients": [
+          {
+              "id": 400,
+              "quantity": {
+                  "amount": 138,
+                  "unit": "c"
+              }
+          },
+          {
+              "id": 500,
+              "quantity": {
+                  "amount": 1,
                   "unit": "c"
               }
           },
