@@ -39,9 +39,11 @@ button {
   width: 33%;
   font-size: 20px;
   outline: none;
+  cursor: pointer;
 }
 
-.navButton:hover {
+.navButton:hover,
+.cook-btn:hover {
   background-color: black;
   color: white;
   transition: background-color 1s;
@@ -76,7 +78,8 @@ main {
   align-items: center;
 }
 
-.recipe-header {
+.recipe-header,
+.recipe-instructions-header {
   font-size: 2em;
   color: white;
 }
@@ -131,6 +134,7 @@ main {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   background-color: white;
   border-bottom: 2px solid black;
 }
@@ -146,4 +150,49 @@ background-color: #f4f4f4;
 
 .trash-icon {
   width: 20px;;
+}
+
+.instructions-page {
+  background-color: #f4f4f4;
+}
+
+.instructions-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 75%;
+  border-radius: 50%;
+  opacity: 0.7;
+  border: 1px solid black;
+  box-shadow: 5px 3px 3px grey;
+  background-color: lightgray;
+}
+
+.instructions-btn:hover{
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.recipe-instructions {
+  width: 95%;
+  height: 80%;
+  font-family: 'Roboto', sans-serif;
+  margin: 5%;
+  font-size: 2em;
+  overflow: scroll;
+}
+
+.cook-btn {
+  border: 1px solid black;
+  height: 9%;
+  width: 15%;
+  font-size: 20px;
+  box-shadow: 5px 3px 3px grey;
+  font-family: 'Lobster', cursive;
+}
+
+.instruction-step {
+  /* border:1px solid lightgray; */
+  width: 95%;
 }

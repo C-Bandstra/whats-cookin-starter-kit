@@ -5,14 +5,14 @@ class User {
     this.pantry = pantry;
     this.favoriteRecipes = [];
     this.recipesToCook = [];
+    
   }
+
   updateFavorites(recipe) {
-    debugger
     if (!this.favoriteRecipes.includes(recipe)) {
       this.favoriteRecipes.push(recipe)
     } else {
-      let match = this.favoriteRecipes.filter(favRecipe => recipe = favRecipe)
-      let index = this.favoriteRecipes.indexOf(match)
+      let index = this.favoriteRecipes.indexOf(recipe)
       this.favoriteRecipes.splice(index)
     }
   }
@@ -21,7 +21,6 @@ class User {
     if (!this.recipesToCook.includes(recipe)) {
       this.recipesToCook.push(recipe)
     } else {
-      let match = this.recipesToCook.filter(savedRecipe => recipe = savedRecipe)
       let index = this.recipesToCook.indexOf(match)
       this.recipesToCook.splice(index)
     }
