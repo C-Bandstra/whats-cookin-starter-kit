@@ -12,7 +12,7 @@
       <section class="button-container">
         <button id='home-button' class='home-button navButton'>Home</button>
         <button id='view-favorites-button' class='favorites-button navButton'>View Favorites</button>
-        <button id='view-recipes' class=' add-recipe-button navButton'>View Your Recipes</button>
+        <button id='view-recipes' class=' add-recipe-button navButton'>Saved For Later</button>
     </section>
     </header>
     <main class="home-page">
@@ -39,6 +39,14 @@
       <section class='favs-cards'>
       </section>
     </main>
+    <main hidden class="instructions-page">
+      <section class="recipe-header-container">
+        <p class="recipe-instructions-header"></p>
+      </section>
+      <section class='recipe-instructions'>
+        <button class="cook-btn">Cook This Recipe!</button>
+      </section>
+    </main>
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/recipes.js"></script>
@@ -46,6 +54,7 @@
     <script type="text/javascript" src="./domInsertions.js"></script>
     <script type="text/javascript" src="./iconSources.js"></script>
     <script type="text/javascript" src="../src/User.js"></script>
+    <script type="text/javascript" src="../src/Recipe.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>
