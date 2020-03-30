@@ -1,45 +1,42 @@
 class Pantry {
-  constructor(userIngredients, allIngredients) {
+  constructor(userIngredients) {
     this.userIngredients = userIngredients;
-    this.allIngredients = allIngredients;
   }
 
-  checkPantryForIngredients(currentRecipe) {
-    let ingredientsOnHand = []
-    let haveIngredients = currentRecipe.ingredients.filter(ingredient => {
-      return this.userIngredients.map(userIngredient => {
-        if (ingredient.id === userIngredient.ingredient && ingredient.quantity.amount <= userIngredient.amount) {
-          ingredientsOnHand.push(ingredient)
-        }
-      });
+  findMatchingIngredient(ingredient) {
+    return this.userIngredients.find(item => item.ingredient === ingredient.id);
+  }
+
+  addName(ingredient) {
+    ingredientsData.find(item => {
+      if (item.id === ingredient.id) {
+        ingredient['name'] = item.name;
+      }
     })
-    
-    return ingredientsOnHand;
   }
-
 
   findNeededIngredients(currentRecipe) {
-    let ingredientsNeeded = []
-    let needIngredients = currentRecipe.ingredients.filter(ingredient => {
-      return this.userIngredients.map(userIngredient => {
-        if (ingredient.id === userIngredient.ingredient && ingredient.quantity.amount > userIngredient.amount) {
-          ingredientsNeeded.push(ingredient)
-        }
-      });
+    let requiredIngredients = currentRecipe.ingredients.map(ingredient => {
+      this.addName(ingredient)
+      let requiredAmount = ingredient.quantity.amount
+      let userAmount = this.findMatchingIngredient(ingredient) ? 
+        this.findMatchingIngredient(ingredient).amount : 0
+      ingredient['amountNeeded'] = requiredAmount - userAmount
+      return ingredient
     })
-    return ingredientsNeeded;
-}
+    return requiredIngredients.filter(ingredient => ingredient.amountNeeded > 0)
+  }
 
   removeRecipeIngredients(currentRecipe) {
     let recipeIngredients = this.checkPantryForIngredients(currentRecipe);
     let userPantry = this.userIngredients
-      let adjustedPantry = userPantry.filter(usedIngredient => {
-        return recipeIngredients.map(ingredient => {
-          if (ingredient.id === usedIngredient.ingredient)
+    let adjustedPantry = userPantry.filter(usedIngredient => {
+      return recipeIngredients.map(ingredient => {
+        if (ingredient.id === usedIngredient.ingredient)
           usedIngredient.amount -= ingredient.quantity.amount;
-        });
-      })
-      return adjustedPantry
+      });
+    })
+    return adjustedPantry
   }
 }
 
