@@ -23,6 +23,11 @@ const user = [
         "ingredient": 400,
         "amount": 40
       },
+      {
+        // Apple
+        "ingredient": 500,
+        "amount": 40
+      },
     ]
   },
 ]
