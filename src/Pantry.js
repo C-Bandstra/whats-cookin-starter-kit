@@ -1,6 +1,3 @@
-const ingredientsData = require('../test/sampleIngredient');
-
-
 class Pantry {
   constructor(userIngredients) {
     this.userIngredients = userIngredients;
@@ -12,12 +9,12 @@ class Pantry {
 
   addName(ingredient) {
     let ingredientName = ingredientsData.find(item => {
-      if (item.id === ingredient.ingredient) {
+      if (item.id === ingredient.id) {
         ingredient['name'] = item.name;
         return 'name', item;
       }
     })
-    return ingredientName.name;
+    return ingredientName;
   }
 
   findNeededIngredients(currentRecipe) {
@@ -33,10 +30,9 @@ class Pantry {
   }
 
   removeRecipeIngredients(currentRecipe) {
-    let recipeIngredients = this.checkPantryForIngredients(currentRecipe);
     let userPantry = this.userIngredients
     let adjustedPantry = userPantry.filter(usedIngredient => {
-      return recipeIngredients.map(ingredient => {
+      return currentRecipe.ingredients.map(ingredient => {
         if (ingredient.id === usedIngredient.ingredient)
           usedIngredient.amount -= ingredient.quantity.amount;
       });
