@@ -117,7 +117,7 @@ function displayInstructions(arr) {
   instructionsHeader.innerText = `${clickedRecipe[0].name}`
   instructionsContainer.innerHTML = `<button id="${event.target.id}" class="cook-btn">Cook This Recipe!</button>`;
   instructions.forEach((inst, i) => instructionsContainer.insertAdjacentHTML('beforeend',
-  `<p class="instruction-step">Step ${i + 1}: ${inst.instruction}</p>`))
+  `<p class="instruction-step"><span id="step-span">Step ${i + 1}:</span> ${inst.instruction}</p>`))
 }
 
 function displayCookMessage() {

@@ -40,6 +40,7 @@ h1{
 
 button {
   border: 0px;
+  border-radius: 2px;
   font-size: 20px;
   height: 90%;
   outline: none;
@@ -73,7 +74,7 @@ main {
   display: flex;
   height: 100%;
   width: 50%;
-  box-shadow: 2px 2px 5px #2E2F2F;
+  box-shadow: 0px 2px 6px #2E2F2F;
   object-fit: cover;
   object-position: center center;
 }
@@ -94,7 +95,7 @@ main {
 }
 
 .recipe-card {
-  box-shadow: 1px 2px 5px #2E2F2F;
+  box-shadow: 0px 2px 6px #2E2F2F;
   border-radius: 3px;
   color: #2E2F2F;
   height: 400px;
@@ -102,7 +103,7 @@ main {
   width: 20%;
 }
 .recipe-card:hover {
-  box-shadow: 3px 4px 7px #2E2F2F;
+  box-shadow: 0px 4px 8px #2E2F2F;
   border-radius: 3px;
   color: #2E2F2F;
   height: 402px;
@@ -138,17 +139,23 @@ main {
 
 .favorite-img {
   width: 20px;
+  opacity: .9;
 }
 
 .favorite-img:hover {
   width: 21px;
+  opacity: 1;
+  font-weight: bold;
 }
 
 .add-recipe-img {
   width: 20px;
+  opacity: .9;
 }
 .add-recipe-img:hover {
   width: 21px;
+  opacity: 1;
+  font-weight: bold;
 }
 
 .add-recipe-button {
@@ -199,40 +206,48 @@ justify-content: space-around;
 
 .fav{
   color: #f4f4f4;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .instructions-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%;
+  width: 75%;
   height: 76%;
   border-radius: 50%;
   opacity: 0.9;
-  box-shadow: 1px 2px 3px black;
+  box-shadow: 0px 2px 3px grey;
   background-color: #2E2F2F;
 }
 
 .instructions-btn:hover{
   cursor: pointer;
-  opacity: 0.7;
-  width: 62%;
+  opacity: 1;
+  width: 77%;
+  box-shadow: 0px 3px 4px gray;
+
 }
 
 .recipe-instructions {
   width: 95%;
   height: 80%;
-  font-family: 'Open Sans', sans-serif;  margin: 5%;
-  font-size: 2em;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 5%;
+  font-size: 16px;
   overflow: scroll;
+  padding-left: 5%;
+}
+
+#step-span{
+  font-size: 24px;
 }
 
 .cook-btn {
   height: 10%;
   width: 17%;
   font-size: 20px;
-  box-shadow: 1px 1px 3px #2E2F2F;
+  box-shadow: 0px 2px 6px #2E2F2F;
   font-family: 'Lobster', cursive;
   background-color: #f4f4f4;
 }
@@ -248,6 +263,6 @@ justify-content: space-around;
   margin-bottom: 2%;
   width: 35%;
   padding: 2%;
-  box-shadow: 1px 1px 4px #2E2F2F;
+  box-shadow: 0px 2px 6px #2E2F2F;
   background-color: white;
 }
