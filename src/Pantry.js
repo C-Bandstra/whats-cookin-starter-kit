@@ -1,3 +1,6 @@
+const ingredientsData = require('../test/sampleIngredient');
+
+
 class Pantry {
   constructor(userIngredients) {
     this.userIngredients = userIngredients;
@@ -8,18 +11,20 @@ class Pantry {
   }
 
   addName(ingredient) {
-    ingredientsData.find(item => {
-      if (item.id === ingredient.id) {
+    let ingredientName = ingredientsData.find(item => {
+      if (item.id === ingredient.ingredient) {
         ingredient['name'] = item.name;
+        return 'name', item;
       }
     })
+    return ingredientName.name;
   }
 
   findNeededIngredients(currentRecipe) {
     let requiredIngredients = currentRecipe.ingredients.map(ingredient => {
       this.addName(ingredient)
       let requiredAmount = ingredient.quantity.amount
-      let userAmount = this.findMatchingIngredient(ingredient) ? 
+      let userAmount = this.findMatchingIngredient(ingredient) ?
         this.findMatchingIngredient(ingredient).amount : 0
       ingredient['amountNeeded'] = requiredAmount - userAmount
       return ingredient

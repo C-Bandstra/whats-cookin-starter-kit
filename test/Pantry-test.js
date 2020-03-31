@@ -5,7 +5,7 @@ const User = require('../src/User');
 const Recipe = require('../src/Recipe');
 const sampleUser = require('../test/sampleUser');
 const sampleRecipe = require('../test/sampleRecipe');
-const sampleIngredient = require('../test/sampleIngredient');
+const ingredientsData = require('../test/sampleIngredient');
 
 describe('Pantry', function() {
 
@@ -13,7 +13,7 @@ describe('Pantry', function() {
     recipe = new Recipe(sampleRecipe[1]);
     recipe1 = new Recipe(sampleRecipe[2])
     user = new User(sampleUser[0].id, sampleUser[0].name, sampleUser[0].pantry);
-    pantry = new Pantry(user.pantry, sampleIngredient);
+    pantry = new Pantry(user.pantry, ingredientsData);
   });
 
   it('should be a function', function() {
@@ -23,12 +23,12 @@ describe('Pantry', function() {
   })
 
   it('should check pantry for needed ingredients' , function() {
+    expect(pantry.findMatchingIngredient(recipe1.ingredients[0])).to.deep.equal({ ingredient: 400, amount: 40 })
+    expect(pantry.findMatchingIngredient(recipe.ingredients[1])).to.deep.equal({ ingredient: 200, amount: 20 })
+  })
 
-    expect(pantry.checkPantryForIngredients(recipe1)).to.deep.equal([])
-    expect(pantry.checkPantryForIngredients(recipe)).to.deep.equal([
-  { id: 100, quantity: { amount: 1, unit: 'c' } },
-  { id: 200, quantity: { amount: 1, unit: 'tsp' } }
-])
+  it('should add a name property to the ingredient', function(){
+    expect(pantry.addName(pantry.userIngredients[0])).to.equal('Banana')
   })
 
   it('should return missing ingredients', function() {
