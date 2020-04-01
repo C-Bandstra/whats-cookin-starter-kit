@@ -9,14 +9,15 @@ const sampleIngredient = require('../test/sampleIngredient');
 describe('Recipe', function() {
 
   const sampleRecipes = sampleRecipe;
-  const sampleIngredients = sampleIngredient;
+  // const sampleIngredients = sampleIngredient;
 
   beforeEach(function() {
     recipe = new Recipe(sampleRecipes[1]);
-    // ingredient = new Ingredient();
+    ingredientsData = sampleIngredient
   });
 
   it('should be a function', function() {
+    console.log(ingredientsData);
 
     expect(Recipe).to.be.a('function');
   });
@@ -28,7 +29,7 @@ describe('Recipe', function() {
 
   it('should get the cost of all of the ingredients', function() {
     let recipe2 = new Recipe(sampleRecipe[0]);
-
+    
     expect(recipe.getCost()).to.equal(1000);
     expect(recipe2.getCost()).to.equal(100);
   })
