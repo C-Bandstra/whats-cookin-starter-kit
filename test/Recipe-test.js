@@ -20,7 +20,7 @@ describe('Recipe', function() {
     expect(Recipe).to.be.a('function');
   });
 
-  it('it should be an instance of recipe', function() {
+  it.only('it should be an instance of recipe', function() {
 
     expect(recipe).to.be.a.instanceOf(Recipe1);
   });
@@ -28,6 +28,12 @@ describe('Recipe', function() {
   it('should get the cost of all of the ingredients', function() {
 
     expect(recipe.getCost(recipesData)).to.equal('0.00');
+  });
+
+  it('should convert the cost in cents to dollars and cents', function() {
+    expect(recipe.convertCost(101)).to.equal('1.01')
+    expect(recipe.convertCost(2000)).to.equal('20.00')
+    expect(recipe.convertCost(30)).to.equal('0.30')
   })
 
   it('should be able to get instructions', function() {
