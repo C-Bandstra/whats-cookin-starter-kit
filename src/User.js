@@ -5,7 +5,7 @@ class User {
     this.pantry = pantry;
     this.favoriteRecipes = [];
     this.recipesToCook = [];
-    
+
   }
 
   updateFavorites(recipe) {
@@ -49,7 +49,6 @@ class User {
   }
 
   filterByTypeOrName(recipesToFilter, filterBy, typeOfFilter) {
-    // console.log('filter', filterBy);
     let filteredRecipes = recipesToFilter.reduce((recipeList, recipe) => {
       if (recipe[typeOfFilter].includes(filterBy)) {
       recipeList.push(recipe)

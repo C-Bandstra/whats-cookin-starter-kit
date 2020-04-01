@@ -13,7 +13,7 @@ let recipes = recipeData.map(recipe => new Recipe(recipe));
 
 window.onload = loadPage();
 
-body.addEventListener('click', clickHandler) 
+body.addEventListener('click', clickHandler)
 
 function clickHandler() {
   var classList = event.target.classList
@@ -55,7 +55,7 @@ function loadPage() {
 }
 
 function showRecipes() {
-  recipeData.forEach(recipe => {    
+  recipeData.forEach(recipe => {
     allCardsContainer.insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
   });
 }
@@ -70,7 +70,7 @@ function generateUser() {
 function displayUserRecipes(arr) {
   let currentPage = document.getElementsByClassName('current')
   currentPage[0].innerHTML = ''
-  arr.forEach(recipe => {    
+  arr.forEach(recipe => {
     currentPage[0].insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
   });
   event.target.classList.contains('favorites-button') ? changeFavCards() : changeSavedCards();
@@ -116,8 +116,8 @@ function displayInstructions(arr) {
   let instructions = arr[index].getInstructions()
   instructionsHeader.innerText = `${clickedRecipe[0].name}`
   instructionsContainer.innerHTML = `<button id="${event.target.id}" class="cook-btn">Cook This Recipe!</button>`;
-  instructions.forEach((inst, i) => instructionsContainer.insertAdjacentHTML('beforeend', 
-  `<p class="instruction-step">Step ${i + 1}: ${inst.instruction}</p>`))
+  instructions.forEach((inst, i) => instructionsContainer.insertAdjacentHTML('beforeend',
+  `<p class="instruction-step"><span id="step-span">Step ${i + 1}:</span> ${inst.instruction}</p>`))
 }
 
 function displayCookMessage() {
@@ -127,7 +127,7 @@ function displayCookMessage() {
   cookBtn[0].insertAdjacentHTML('afterend', `<div class="needed-list"></div>`)
   let list = instructionsContainer.getElementsByClassName('needed-list')
   needed.forEach(item => {
-    list[0].insertAdjacentHTML('afterbegin', 
+    list[0].insertAdjacentHTML('afterbegin',
     `<li>You need ${item.amountNeeded} ${item.quantity.unit} of ${item.name}</li>`)
   })
 }

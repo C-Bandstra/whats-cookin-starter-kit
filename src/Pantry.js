@@ -8,18 +8,20 @@ class Pantry {
   }
 
   addName(ingredient) {
-    ingredientsData.find(item => {
+    let ingredientName = ingredientsData.find(item => {
       if (item.id === ingredient.id) {
         ingredient['name'] = item.name;
+        return 'name', item;
       }
     })
+    return ingredientName;
   }
 
   findNeededIngredients(currentRecipe) {
     let requiredIngredients = currentRecipe.ingredients.map(ingredient => {
       this.addName(ingredient)
       let requiredAmount = ingredient.quantity.amount
-      let userAmount = this.findMatchingIngredient(ingredient) ? 
+      let userAmount = this.findMatchingIngredient(ingredient) ?
         this.findMatchingIngredient(ingredient).amount : 0
       ingredient['amountNeeded'] = requiredAmount - userAmount
       return ingredient
@@ -28,10 +30,9 @@ class Pantry {
   }
 
   removeRecipeIngredients(currentRecipe) {
-    let recipeIngredients = this.checkPantryForIngredients(currentRecipe);
     let userPantry = this.userIngredients
     let adjustedPantry = userPantry.filter(usedIngredient => {
-      return recipeIngredients.map(ingredient => {
+      return currentRecipe.ingredients.map(ingredient => {
         if (ingredient.id === usedIngredient.ingredient)
           usedIngredient.amount -= ingredient.quantity.amount;
       });
