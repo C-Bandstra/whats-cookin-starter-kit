@@ -79,7 +79,8 @@ main {
 }
 
 .recipe-header,
-.recipe-instructions-header {
+.recipe-instructions-header,
+.recipe-search-header {
   font-size: 2em;
   color: white;
 }
@@ -141,7 +142,8 @@ main {
 
 .all-cards,
 .favs-cards,
-.added-cards{
+.added-cards,
+.recipe-matches {
 display: flex;
 justify-content: space-around;
 flex-wrap: wrap;
