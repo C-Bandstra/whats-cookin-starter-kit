@@ -16,7 +16,7 @@ describe('User', function() {
     recipe1 = new Recipe(sampleRecipe[1]);
     recipe2 = new Recipe(sampleRecipe[3]);
     user = new User(sampleUser[0].id, sampleUser[0].name, sampleUser[0].pantry);
-    testIngredients = sampleIngredient
+    ingredientsData = sampleIngredient
   })
 
 

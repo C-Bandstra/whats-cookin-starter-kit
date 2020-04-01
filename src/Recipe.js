@@ -14,6 +14,7 @@ class Recipe {
     let result;
     arr.forEach(ingredient => {
       ingredientsData.find(specificIngredient => {
+        // console.log('data', ingredient.id);
         if(specificIngredient.id === ingredient.id) {
           costCounter += specificIngredient.estimatedCostInCents * ingredient.quantity.amount
           result = costCounter;
@@ -21,6 +22,7 @@ class Recipe {
       })
     });
     result = this.convertCost(costCounter)
+    console.log('log', result);
     return result
   }
 

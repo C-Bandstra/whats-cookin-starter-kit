@@ -8,30 +8,26 @@ const sampleIngredient = require('../test/sampleIngredient');
 
 describe('Recipe', function() {
 
-  const sampleRecipes = sampleRecipe;
-  // const sampleIngredients = sampleIngredient;
-
   beforeEach(function() {
-    recipe = new Recipe(sampleRecipes[1]);
     ingredientsData = sampleIngredient
+    recipesData = sampleRecipe
+    recipe = new Recipe(recipesData[1]);
   });
 
   it('should be a function', function() {
-    console.log(ingredientsData);
+    console.log(sampleIngredient);
 
     expect(Recipe).to.be.a('function');
   });
 
   it('it should be an instance of recipe', function() {
 
-    expect(recipe).to.be.a.instanceOf(Recipe);
+    expect(recipe).to.be.a.instanceOf(Recipe1);
   });
 
   it('should get the cost of all of the ingredients', function() {
-    let recipe2 = new Recipe(sampleRecipe[0]);
-    
-    expect(recipe.getCost()).to.equal(1000);
-    expect(recipe2.getCost()).to.equal(100);
+
+    expect(recipe.getCost(recipesData)).to.equal('0.00');
   })
 
   it('should be able to get instructions', function() {
