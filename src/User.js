@@ -21,7 +21,7 @@ class User {
     if (!this.recipesToCook.includes(recipe)) {
       this.recipesToCook.push(recipe)
     } else {
-      let index = this.recipesToCook.indexOf(match)
+      let index = this.recipesToCook.indexOf(recipe)
       this.recipesToCook.splice(index)
     }
   }
@@ -35,6 +35,8 @@ class User {
   }
 
   filterByIngredient(recipesToFilter, filterBy) {
+    console.log('recipes', recipesToFilter);
+    console.log('filter', filterBy);
     let matching = []
     recipesToFilter.forEach(recipe => {
       recipe.ingredients.filter(testIngredient => {

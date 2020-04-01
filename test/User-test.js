@@ -55,21 +55,18 @@ describe('User', function() {
   it('should determine the type of Filter', function() {
     user.updateFavorites(recipe);
     user.updateFavorites(recipe1);
-
-    expect(user.determineFilterType(user.favoriteRecipes, 100, 'ingredients')).to.equal('hi');
+    expect(user.determineFilterType(user.favoriteRecipes, 100, 'ingredients')).to.deep.equal([user.favoriteRecipes[1]]);
     expect(user.determineFilterType(user.favoriteRecipes, 'fruit', 'type')).to.deep.equal([user.favoriteRecipes[1]]);
   })
   it('should filter recipes by type', function() {
     user.updateFavorites(recipe);
     user.updateFavorites(recipe1);
-    // user.filterRecipesByType(user.favoriteRecipes);
 
     expect(user.determineFilterType(user.favoriteRecipes, 'fruit', 'type')).to.deep.equal([user.favoriteRecipes[1]])
   })
   it('should filter recipes by name', function() {
     user.updateFavorites(recipe);
     user.updateFavorites(recipe1);
-    // user.filterRecipesByType(user.favoriteRecipes);
 
     expect(user.determineFilterType(user.favoriteRecipes, 'Banana', 'name')).to.deep.equal([user.favoriteRecipes[1]])
   })
