@@ -11,7 +11,7 @@ let instructionsHeader = document.querySelector('.recipe-instructions-header')
 let instructionsContainer = document.querySelector('.recipe-instructions')
 let selectBox = document.querySelector('.categories')
 let searchInput = document.querySelector('.search-input')
-let searchContainer = document.querySelector('.recipe-matches')
+let searchBtn = document.querySelector('.search-btn')
 
 let recipes = recipeData.map(recipe => new Recipe(recipe));
 
@@ -20,6 +20,7 @@ window.onload = loadPage();
 body.addEventListener('click', clickHandler) 
 
 function clickHandler() {
+  console.log(event)
   var classList = event.target.classList
   if (classList.contains('favorite-img')) {
     displayIconChange(iconSources.red, iconSources.white)
@@ -54,6 +55,10 @@ function clickHandler() {
   if (classList.contains('search-icon')) {
     displayPage(searchPage, instructionsPage, addedPage, homePage, favoritesPage)
     displayUserRecipes(search());
+    resetInputs();
+  }
+  if (classList.contains('categories')) {
+    searchInput.removeAttribute('disabled')
   }
 }
 
@@ -124,9 +129,9 @@ function displayInstructions(arr) {
   let index = arr.indexOf(clickedRecipe[0])
   let instructions = arr[index].getInstructions()
   instructionsHeader.innerText = `${clickedRecipe[0].name}`
-  instructionsContainer.innerHTML = `<button id="${event.target.id}" class="cook-btn">Cook This Recipe!</button>`;
+  instructionsContainer.innerHTML = `<button id="${event.target.id}" class="cook-btn">Cook This     Recipe!</button>`;
   instructions.forEach((inst, i) => instructionsContainer.insertAdjacentHTML('beforeend', 
-  `<p class="instruction-step">Step ${i + 1}: ${inst.instruction}</p>`))
+    `<p class="instruction-step">Step ${i + 1}: ${inst.instruction}</p>`))
 }
 
 function displayCookMessage() {
@@ -137,7 +142,7 @@ function displayCookMessage() {
   let list = instructionsContainer.getElementsByClassName('needed-list')
   needed.forEach(item => {
     list[0].insertAdjacentHTML('afterbegin', 
-    `<li>You need ${item.amountNeeded} ${item.quantity.unit} of ${item.name}</li>`)
+      `<li>You need ${item.amountNeeded} ${item.quantity.unit} of ${item.name}</li>`)
   })
 }
 
@@ -145,4 +150,10 @@ function search() {
   let type = selectBox.options[selectBox.selectedIndex].value
   let input = searchInput.value
   return User.determineFilterType(recipes, input, type)
+}
+
+function resetInputs() {
+  searchInput.value = ''
+  searchInput.setAttribute('disabled', '');
+  selectBox.value = 'category'
 }
