@@ -1,6 +1,3 @@
-// const sampleIngredient = require('../test/sampleIngredient');
-
-
 class Recipe {
   constructor(recipe) {
     this.id = recipe.id;
@@ -15,7 +12,7 @@ class Recipe {
     let costCounter = 0;
     let result;
     this.ingredients.forEach(ingredient => {
-      sampleIngredient.find(specificIngredient => {
+      ingredientsData.find(specificIngredient => {
         if(specificIngredient.id === ingredient.id) {
           costCounter += specificIngredient.estimatedCostInCents * ingredient.quantity.amount
           result = costCounter;

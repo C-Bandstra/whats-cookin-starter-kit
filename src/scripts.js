@@ -17,7 +17,7 @@ let recipes = recipeData.map(recipe => new Recipe(recipe));
 
 window.onload = loadPage();
 
-body.addEventListener('click', clickHandler) 
+body.addEventListener('click', clickHandler)
 
 function clickHandler() {
   console.log(event)
@@ -68,7 +68,7 @@ function loadPage() {
 }
 
 function showRecipes() {
-  recipeData.forEach(recipe => {    
+  recipeData.forEach(recipe => {
     allCardsContainer.insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
   });
 }
@@ -82,7 +82,7 @@ function generateUser() {
 function displayUserRecipes(arr) {
   let currentPage = document.getElementsByClassName('current')
   currentPage[0].innerHTML = ''
-  arr.forEach(recipe => {    
+  arr.forEach(recipe => {
     currentPage[0].insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
   });
   event.target.classList.contains('favorites-button') ? changeFavCards() : changeSavedCards();
@@ -129,9 +129,9 @@ function displayInstructions(arr) {
   let index = arr.indexOf(clickedRecipe[0])
   let instructions = arr[index].getInstructions()
   instructionsHeader.innerText = `${clickedRecipe[0].name}`
-  instructionsContainer.innerHTML = `<button id="${event.target.id}" class="cook-btn">Cook This     Recipe!</button>`;
-  instructions.forEach((inst, i) => instructionsContainer.insertAdjacentHTML('beforeend', 
-    `<p class="instruction-step">Step ${i + 1}: ${inst.instruction}</p>`))
+  instructionsContainer.innerHTML = `<button id="${event.target.id}" class="cook-btn">Cook This Recipe!</button>`;
+  instructions.forEach((inst, i) => instructionsContainer.insertAdjacentHTML('beforeend',
+  `<p class="instruction-step"><span id="step-span">Step ${i + 1}:</span> ${inst.instruction}</p>`))
 }
 
 function displayCookMessage() {
