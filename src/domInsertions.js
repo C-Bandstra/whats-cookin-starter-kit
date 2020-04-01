@@ -10,6 +10,9 @@ let domInsertions = {
         <button class="recipe-button">
           <img id="${recipe.name}" src="https://i.ya-webdesign.com/images/heart-icon-png-7.png" class="favorite-img">
         </button>
+        <section class="cost-container">
+          <p class="cost">$${recipe.cost}</p>
+         </section>
         <button class="recipe-button">
           <img id="${recipe.name}" src="https://image.flaticon.com/icons/svg/32/32339.svg" class="add-recipe-img">
         </button>

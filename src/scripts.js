@@ -7,11 +7,12 @@ let instructionsPage = document.querySelector('.instructions-page')
 let searchPage = document.querySelector('.search-page')
 let favRecipes = document.querySelector('.favs-cards');
 let addedRecipes = document.querySelector('.added-cards');
-let instructionsHeader = document.querySelector('.recipe-instructions-header')
-let instructionsContainer = document.querySelector('.recipe-instructions')
-let selectBox = document.querySelector('.categories')
-let searchInput = document.querySelector('.search-input')
-let searchBtn = document.querySelector('.search-btn')
+let instructionsHeader = document.querySelector('.recipe-instructions-header');
+let instructionsContainer = document.querySelector('.recipe-instructions');
+let selectBox = document.querySelector('.categories');
+let searchInput = document.querySelector('.search-input');
+let searchBtn = document.querySelector('.search-btn');
+let currentPage;
 
 let recipes = recipeData.map(recipe => new Recipe(recipe));
 
@@ -30,29 +31,30 @@ function clickHandler() {
     User.updateRecipesToCook(addToUser());
   }
   if (classList.contains('add-recipe-button')) {
-    displayPage(addedPage, favoritesPage, homePage, instructionsPage, searchPage);
+    displayPage(addedPage, favoritesPage, homePage, instructionsPage);
     displayUserRecipes(User.recipesToCook);
   }
   if (classList.contains('favorites-button')) {
-    displayPage(favoritesPage, addedPage, homePage, instructionsPage, searchPage);
+    displayPage(favoritesPage, addedPage, homePage, instructionsPage);
     displayUserRecipes(User.favoriteRecipes);
   }
   if (classList.contains('home-button')) {
-    displayPage(homePage, addedPage, favoritesPage, instructionsPage, searchPage);
+    displayPage(homePage, addedPage, favoritesPage, instructionsPage);
   }
   if (classList.contains('fav')) {
-    displayPage(instructionsPage, addedPage, homePage, favoritesPage, searchPage)
+    displayPage(instructionsPage, addedPage, homePage, favoritesPage)
     displayInstructions(User.favoriteRecipes);
   }
   if (classList.contains('saved')) {
-    displayPage(instructionsPage, addedPage, homePage, favoritesPage, searchPage)
+    displayPage(instructionsPage, addedPage, homePage, favoritesPage)
     displayInstructions(User.recipesToCook);
   }
   if (classList.contains('cook-btn')) {
-    displayCookMessage();
+    instructionsContainer.childNodes.length == 2 ? displayCookMessage() : null
   }
+  
   if (classList.contains('search-icon')) {
-    displayPage(searchPage, instructionsPage, addedPage, homePage, favoritesPage)
+    displaySearch();
     displayUserRecipes(search());
     resetInputs();
   }
@@ -61,13 +63,18 @@ function clickHandler() {
   }
 }
 
+function displaySearch() {
+  let header = currentPage.querySelector('.recipe-header')
+  header.innerText = 'Recipes Found'
+}
+
 function loadPage() {
   showRecipes(recipes);
   generateUser();
 }
 
 function showRecipes() {
-  recipeData.forEach(recipe => {
+  recipes.forEach(recipe => {
     allCardsContainer.insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
   });
 }
@@ -98,17 +105,16 @@ function addToUser() {
   return clickedRecipe[0]
 }
 
-function displayPage(currentPage, page1, page2, page3, page4) {
-  currentPage.removeAttribute('hidden');
+function displayPage(current, page1, page2, page3) {
+  current.removeAttribute('hidden');
   page1.setAttribute('hidden', '')
   page2.setAttribute('hidden', '');
   page3.setAttribute('hidden', '');
-  page4.setAttribute('hidden', '');
   page1.childNodes[3].classList.remove('current')
   page2.childNodes[3].classList.remove('current')
   page3.childNodes[3].classList.remove('current')
-  page3.childNodes[3].classList.remove('current')
-  currentPage.childNodes[3].classList.add('current')
+  current.childNodes[3].classList.add('current')
+  currentPage = current;
 }
 
 function changeFavCards() {
@@ -134,10 +140,12 @@ function displayInstructions(arr) {
 }
 
 function displayCookMessage() {
-  let recipe = recipeData.filter(recipe => recipe.id == event.target.id);
+  let recipe = recipes.filter(recipe => recipe.id == event.target.id);
   let needed = User.pantry.findNeededIngredients(recipe[0]);
+  console.log(recipe)
   let cookBtn = instructionsContainer.getElementsByClassName('cook-btn')
-  cookBtn[0].insertAdjacentHTML('afterend', `<div class="needed-list"></div>`)
+  cookBtn[0].insertAdjacentHTML('afterend', `<div class="needed-list">
+  <p>These ingredients cost $${recipe[0].getCost(needed)}</p> </div>`)
   let list = instructionsContainer.getElementsByClassName('needed-list')
   needed.forEach(item => {
     list[0].insertAdjacentHTML('afterbegin', 
@@ -147,8 +155,12 @@ function displayCookMessage() {
 
 function search() {
   let type = selectBox.options[selectBox.selectedIndex].value
-  let input = searchInput.value
-  return User.determineFilterType(recipes, input, type)
+  let input = searchInput.value;
+  let arr;
+  currentPage.classList.contains('home-page') ?  arr = recipes : undefined
+  currentPage.classList.contains('favorites-page') ?  arr = User.favoriteRecipes : undefined
+  currentPage.classList.contains('added-page') ?  arr = User.recipesToCook : undefined
+  return User.determineFilterType(arr, input, type)
 }
 
 function resetInputs() {
