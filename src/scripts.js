@@ -20,7 +20,6 @@ window.onload = loadPage();
 body.addEventListener('click', clickHandler)
 
 function clickHandler() {
-  console.log(event)
   var classList = event.target.classList
   if (classList.contains('favorite-img')) {
     displayIconChange(iconSources.red, iconSources.white)
@@ -31,7 +30,7 @@ function clickHandler() {
     User.updateRecipesToCook(addToUser());
   }
   if (classList.contains('add-recipe-button')) {
-    displayPage(addedPage, favoritesPage, homePage, instructionsPage);
+    displayPage(addedPage, favoritesPage, homePage, instructionsPage, searchPage);
     displayUserRecipes(User.recipesToCook);
   }
   if (classList.contains('favorites-button')) {
