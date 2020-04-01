@@ -20,9 +20,8 @@ describe('Recipe', function() {
     expect(Recipe).to.be.a('function');
   });
 
-  it.only('it should be an instance of recipe', function() {
-
-    expect(recipe).to.be.a.instanceOf(Recipe1);
+  it('it should be an instance of recipe', function() {
+    expect(recipe).to.be.a.instanceOf(Recipe);
   });
 
   it('should get the cost of all of the ingredients', function() {

@@ -22,7 +22,6 @@ class Recipe {
       })
     });
     result = this.convertCost(costCounter)
-    console.log('log', result);
     return result
   }
 

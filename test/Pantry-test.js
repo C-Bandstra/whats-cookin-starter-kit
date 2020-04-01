@@ -10,11 +10,11 @@ const sampleIngredient = require('../test/sampleIngredient');
 describe('Pantry', function() {
 
   beforeEach(function() {
+    ingredientsData = sampleIngredient
     recipe = new Recipe(sampleRecipe[1]);
     recipe1 = new Recipe(sampleRecipe[2])
     user = new User(sampleUser[0].id, sampleUser[0].name, sampleUser[0].pantry);
     pantry = new Pantry(user.pantry, sampleIngredient);
-    ingredientsData = sampleIngredient
   });
 
   it('should be a function', function() {
