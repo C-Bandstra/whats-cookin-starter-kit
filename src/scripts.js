@@ -4,10 +4,14 @@ let homePage = document.querySelector('.home-page');
 let addedPage = document.querySelector('.added-page');
 let favoritesPage = document.querySelector('.favorites-page');
 let instructionsPage = document.querySelector('.instructions-page')
+let searchPage = document.querySelector('.search-page')
 let favRecipes = document.querySelector('.favs-cards');
 let addedRecipes = document.querySelector('.added-cards');
 let instructionsHeader = document.querySelector('.recipe-instructions-header')
 let instructionsContainer = document.querySelector('.recipe-instructions')
+let selectBox = document.querySelector('.categories')
+let searchInput = document.querySelector('.search-input')
+let searchContainer = document.querySelector('.recipe-matches')
 
 let recipes = recipeData.map(recipe => new Recipe(recipe));
 
@@ -30,22 +34,26 @@ function clickHandler() {
     displayUserRecipes(User.recipesToCook);
   }
   if (classList.contains('favorites-button')) {
-    displayPage(favoritesPage, addedPage, homePage, instructionsPage);
+    displayPage(favoritesPage, addedPage, homePage, instructionsPage, searchPage);
     displayUserRecipes(User.favoriteRecipes);
   }
   if (classList.contains('home-button')) {
-    displayPage(homePage, addedPage, favoritesPage, instructionsPage);
+    displayPage(homePage, addedPage, favoritesPage, instructionsPage, searchPage);
   }
   if (classList.contains('fav')) {
-    displayPage(instructionsPage, addedPage, homePage, favoritesPage)
+    displayPage(instructionsPage, addedPage, homePage, favoritesPage, searchPage)
     displayInstructions(User.favoriteRecipes);
   }
   if (classList.contains('saved')) {
-    displayPage(instructionsPage, addedPage, homePage, favoritesPage)
+    displayPage(instructionsPage, addedPage, homePage, favoritesPage, searchPage)
     displayInstructions(User.recipesToCook);
   }
-  if(classList.contains('cook-btn')) {
+  if (classList.contains('cook-btn')) {
     displayCookMessage();
+  }
+  if (classList.contains('search-icon')) {
+    displayPage(searchPage, instructionsPage, addedPage, homePage, favoritesPage)
+    displayUserRecipes(search());
   }
 }
 
@@ -59,7 +67,6 @@ function showRecipes() {
     allCardsContainer.insertAdjacentHTML('beforeend', domInsertions.insertRecipeCard(recipe))
   });
 }
-
 
 function generateUser() {
   let user = usersData[Math.floor(Math.random() * usersData.length)]
@@ -87,13 +94,15 @@ function addToUser() {
   return clickedRecipe[0]
 }
 
-function displayPage(currentPage, page1, page2, page3) {
+function displayPage(currentPage, page1, page2, page3, page4) {
   currentPage.removeAttribute('hidden');
   page1.setAttribute('hidden', '')
   page2.setAttribute('hidden', '');
   page3.setAttribute('hidden', '');
+  page4.setAttribute('hidden', '');
   page1.childNodes[3].classList.remove('current')
   page2.childNodes[3].classList.remove('current')
+  page3.childNodes[3].classList.remove('current')
   page3.childNodes[3].classList.remove('current')
   currentPage.childNodes[3].classList.add('current')
 }
@@ -130,4 +139,10 @@ function displayCookMessage() {
     list[0].insertAdjacentHTML('afterbegin', 
     `<li>You need ${item.amountNeeded} ${item.quantity.unit} of ${item.name}</li>`)
   })
+}
+
+function search() {
+  let type = selectBox.options[selectBox.selectedIndex].value
+  let input = searchInput.value
+  return User.determineFilterType(recipes, input, type)
 }
