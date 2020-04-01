@@ -70,9 +70,9 @@ describe('User', function() {
 
     expect(user.determineFilterType(user.favoriteRecipes, 'Banana', 'name')).to.deep.equal([user.favoriteRecipes[1]])
   })
-  it.only('should filter recipes by ingredient', function() {
+  it('should filter recipes by ingredient', function() {
     user.updateFavorites(recipe);
     user.updateFavorites(recipe1);
-    expect(user.determineFilterType(user.favoriteRecipes, 'Banana', 'ingredients')).to.deep.equal([user.favoriteRecipes[1]])
+    expect(user.determineFilterType(user.favoriteRecipes, 100, 'ingredients')).to.deep.equal([user.favoriteRecipes[1]])
   })
 })

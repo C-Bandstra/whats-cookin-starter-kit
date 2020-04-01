@@ -35,8 +35,6 @@ class User {
   }
 
   filterByIngredient(recipesToFilter, filterBy) {
-    console.log('recipes', recipesToFilter);
-    console.log('filter', filterBy);
     let matching = []
     recipesToFilter.forEach(recipe => {
       recipe.ingredients.filter(testIngredient => {
