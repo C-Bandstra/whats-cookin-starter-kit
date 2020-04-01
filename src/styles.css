@@ -107,7 +107,8 @@ main {
   align-items: center;
   background-color: white;
   border-bottom: 1px solid #2E2F2F;
-  border-radius: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   display: flex;
   font-size: 20px;
   height: 19%;
@@ -116,7 +117,7 @@ main {
   width: 100%;
 }
 .recipe-img {
-  border-bott om: 1px solid #2E2F2F;
+  border-bottom: 1px solid #2E2F2F;
   height: 65%;
   width: 100%;
   object-fit: cover;
