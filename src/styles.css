@@ -76,7 +76,8 @@ main {
   justify-content: center;
 }
 .recipe-header,
-.recipe-instructions-header {
+.recipe-instructions-header,
+.recipe-search-header {
   font-size: 2em;
   color: white;
   font-size: 2em;
@@ -158,28 +159,34 @@ main {
   justify-content: space-around;
   width: 100%;
 }
+
 .all-cards,
 .favs-cards,
-.added-cards{
-background-color: #f4f4f4;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
+.added-cards,
+.recipe-matches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
+
 .trash-icon {
   width: 20px;;
 }
+
 .intructions-card{
   background: #f4f4f4;
 }
+
 .saved{
   color: #f4f4f4;
   font-size: 12px;
 }
+
 .fav{
   color: #f4f4f4;
   font-size: 16px;
 }
+
 .instructions-btn {
   display: flex;
   align-items: center;
@@ -191,12 +198,14 @@ justify-content: space-around;
   box-shadow: 0px 2px 3px grey;
   background-color: #2E2F2F;
 }
+
 .instructions-btn:hover{
   cursor: pointer;
   opacity: 1;
   width: 77%;
   box-shadow: 0px 3px 4px gray;
 }
+
 .recipe-instructions {
   width: 95%;
   height: 80%;
@@ -206,9 +215,11 @@ justify-content: space-around;
   overflow: scroll;
   padding-left: 5%;
 }
+
 #step-span{
   font-size: 24px;
 }
+
 .cook-btn {
   height: 10%;
   width: 17%;
@@ -217,10 +228,12 @@ justify-content: space-around;
   font-family: 'Lobster', cursive;
   background-color: #f4f4f4;
 }
+
 .instruction-step {
   width: 95%;
   background-color: white;
 }
+
 .needed-list {
   margin-top: 2%;
   border-radius: 3px;
@@ -229,4 +242,50 @@ justify-content: space-around;
   padding: 2%;
   box-shadow: 0px 2px 6px #2E2F2F;
   background-color: white;
+  border: 2px solid black;
+  opacity: 0.7;
+}
+
+.search-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  width: 25%;
+  margin-left: 12%;
+}
+
+.search-btn {
+  height: 113%;
+  width: 13%;
+  border: 0px;
+  margin-right: 0px;
+  padding: 0px;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-input {
+  margin-left: 0%;
+  font-size: 1.5em;
+  height: 100%;
+  width: 90%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  outline: none;
+  padding-left: 10px;
+}
+
+.search-icon {
+  border-top: 1px solid grey;
+  background-color: lightgray;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  width: 100%;
+  height: 100%
+}
+
+.categories {
+  margin-right: 2%;
+  outline: none;
 }

@@ -10,6 +10,18 @@
   <body>
     <header class='main-header'>
       <h1>What's Cookin'</h1>
+      <div class="search-container">
+        <select class="categories">
+          <option value="category">Select A Filter:</option>
+          <option value="name">Name</option>
+          <option value="type">Type</option>
+          <option value="ingredients">Ingredient ID :)</option>
+        </select>
+        <button type="submit-button" class="search-btn">
+          <img src="../assets/search--v2.png" alt="search-button" class="search-icon">
+        </button>
+        <input disabled placeholder="Search" text" class="search-input">
+      </div>
       <section class="button-container">
         <button id='home-button' class='home-button navButton'>Home</button>
         <button id='view-favorites-button' class='favorites-button navButton'>View Favorites</button>
@@ -46,6 +58,13 @@
       </section>
       <section class='recipe-instructions'>
         <button class="cook-btn">Cook This Recipe!</button>
+      </section>
+    </main>
+    <main hidden class="search-page">
+      <section class="recipe-header-container">
+        <p class="recipe-search-header">Recipes Found</p>
+      </section>
+      <section class='recipe-matches'>
       </section>
     </main>
 
