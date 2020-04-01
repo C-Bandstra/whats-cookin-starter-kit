@@ -6,12 +6,13 @@ class Recipe {
     this.image = recipe.image;
     this.ingredients = recipe.ingredients;
     this.instructions = recipe.instructions;
+    this.cost = this.getCost(this.ingredients);
   }
 
-  getCost() {
+  getCost(arr) {
     let costCounter = 0;
     let result;
-    this.ingredients.forEach(ingredient => {
+    arr.forEach(ingredient => {
       ingredientsData.find(specificIngredient => {
         if(specificIngredient.id === ingredient.id) {
           costCounter += specificIngredient.estimatedCostInCents * ingredient.quantity.amount
@@ -19,7 +20,15 @@ class Recipe {
         }
       })
     });
+    result = this.convertCost(costCounter)
     return result
+  }
+
+  convertCost(cost) {
+    let dollars = Math.floor(cost / 100)
+    let cents = Math.floor(cost % 100)
+    cents < 10 ? cents = '0' + cents : cents
+    return `${dollars}.${cents}`
   }
 
   getInstructions() {
